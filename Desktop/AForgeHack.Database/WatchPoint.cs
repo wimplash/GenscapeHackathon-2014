@@ -20,6 +20,7 @@ namespace AForgeHack.Database
         public int Width { get; set; }
         public int Height { get; set; }
         public virtual List<Event> Events { get; set; }
+        public bool Deactivated { get; set; }
         public override string ToString()
         {
             return this.Name;
