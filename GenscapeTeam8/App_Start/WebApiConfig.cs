@@ -15,6 +15,12 @@ namespace GenscapeTeam8
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "ImagesController",
+                routeTemplate: "api/Images/{id}/{timestamp}",
+                defaults: new { id = RouteParameter.Optional, timestamp = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
