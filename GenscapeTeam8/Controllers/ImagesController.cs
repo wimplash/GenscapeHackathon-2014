@@ -12,7 +12,7 @@ namespace GenscapeTeam8.Controllers
     {
         public HttpResponseMessage Get(HttpRequestMessage request, [FromUri] int id, [FromUri] long timestamp)
         {
-            byte[] imgData = new byte[];
+            byte[] imgData = new byte[0];
             MemoryStream ms = new MemoryStream(imgData);
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
             response.Content = new StreamContent(ms);
