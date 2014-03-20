@@ -24,6 +24,7 @@ namespace GenscapeTeam8.Controllers
             return View();
         }
 
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Overview(int id)
         {
             return View(context.Cameras.Find(id));
