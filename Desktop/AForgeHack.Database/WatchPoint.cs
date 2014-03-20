@@ -13,7 +13,7 @@ namespace AForgeHack.Database
             this.Events = new List<Event>();
         }
         public int WatchPointID { get; set; }
-        public Camera Camera { get; set; }
+        public virtual Camera Camera { get; set; }
         public string Name { get; set; }
         public int Top { get; set; }
         public int Left { get; set; }
