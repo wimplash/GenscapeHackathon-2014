@@ -83,10 +83,11 @@ namespace AforgeHack
             {
                 processCounter = 0;
 
-                
-                for (int i = 0; i < this.camera.WatchPoints.Count; i++)
+
+                var wps = this.camera.WatchPoints.Where(wp => !wp.Deactivated).ToList();
+                for (int i = 0; i < wps.Count; i++)
                 {
-                    var point = this.camera.WatchPoints[i];
+                    var point = wps[i];
                     detector.MotionZones = new Rectangle[] { new Rectangle(point.Left, point.Top, point.Width, point.Height) };
                     var value = detector.ProcessFrame(frame);                    
                     if (value > .001)
@@ -97,7 +98,7 @@ namespace AforgeHack
                             var e = new Event() { StartTime = DateTime.Now, EndTime = DateTime.Now, Notes = "Motion", WatchPoint = point };
                             this.AddEvent(e);
                             point.Events.Add(e);
-                            db.SaveChangesAsync();                            
+                            db.SaveChanges();                    
                         }
                         else
                         {
@@ -206,9 +207,11 @@ namespace AforgeHack
             if (marking)
             {
                 this.hackPictureBox1.MarkerPoints.Clear();
-                this.watchPointHolder = this.camera.WatchPoints.ToList();
-                this.Camera.WatchPoints.Clear();
-                db.WatchPoints.RemoveRange(this.Camera.WatchPoints);
+                this.watchPointHolder = this.camera.WatchPoints.Where(wp => !wp.Deactivated).ToList();
+                foreach (var wp in this.watchPointHolder)
+                {
+                    wp.Deactivated = true;
+                }
                 this.button1.Text = "Save Watch Points";
                 this.CancelButton.Visible = true;
             }
@@ -232,10 +235,13 @@ namespace AforgeHack
         private void CancelButton_Click(object sender, EventArgs e)
         {
             marking = false;
+            foreach(var wp in this.camera.WatchPoints.Where(wp => !wp.Deactivated))
+            {
+                wp.Deactivated = true;
+            }
             foreach(var wp in this.watchPointHolder)
             {
-                db.Entry(wp).State = System.Data.Entity.EntityState.Modified;
-                this.Camera.WatchPoints.Add(wp);
+                wp.Deactivated = false;
             }
             db.SaveChangesAsync();
             this.LoadWatchPoints();
@@ -246,7 +252,7 @@ namespace AforgeHack
         private void LoadWatchPoints()
         {
             this.hackPictureBox1.MarkerPoints.Clear();
-            foreach (var watchPoint in Camera.WatchPoints)
+            foreach (var watchPoint in Camera.WatchPoints.Where(wp => !wp.Deactivated))
             {
                 this.hackPictureBox1.MarkerPoints.Add(new MarkerPoint((watchPoint.Left + 20) / (decimal)frameWidth, (watchPoint.Top + 20) / (decimal)frameHeight, watchPoint.Width, watchPoint.Height));
                 
