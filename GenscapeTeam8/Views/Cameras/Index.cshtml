@@ -9,12 +9,12 @@
         <table class="table table-condensed table-striped">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Facility Name</th>
                     <th>Camera Name</th>
                     <th># of Watch Points</th>
                     <th>Url</th>
                     <th>Path</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -29,13 +29,15 @@
                     foreach (var camera in ViewBag.Cameras)
                     {
                         <tr data-camera-id="@camera.CameraID" data-camera-moniker="@(camera.Moniker == null ? String.Empty : @Html.Raw(camera.Moniker))">
+                            <td>
+                                <a href="/Cameras/Overview/@camera.CameraID" title="View Motion Graph"><span class="glyphicon glyphicon-film"></span></a>
+                                <a href="/WatchPoints/Index/@camera.CameraID" title="View Watch Points"><span class="glyphicon glyphicon-search"></span></a>
+                            </td>
                             <td>@(camera.Facility == null ? String.Empty : camera.Facility.Name)</td>
                             <td>@camera.Name</td>
                             <td>@camera.WatchPoints.Count</td>
                             <td>@camera.Url</td>
                             <td>@camera.Path</td>
-                            <td>@Html.ActionLink("Motion Graph", "Overview", "Cameras", new { id = camera.CameraID }, null)</td>
-                            <td>@Html.ActionLink("View Watch Points", "Index", "WatchPoints", new { id = camera.CameraID }, null)</td>
                         </tr>
                     }
                 }
