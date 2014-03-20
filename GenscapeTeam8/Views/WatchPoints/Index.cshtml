@@ -6,12 +6,12 @@
 </div>
 <div class="row">
     <div class="col-lg-6">
-        <table class="table zebra-striped" >
+        <table class="table table-condensed table-striped" >
             <thead>
                 <tr>
+                    <th></th>
                     <th>Camera</th>
                     <th>Name</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,9 +26,9 @@
                     foreach (var watchPoint in ViewBag.WatchPoints)
                     {
                         <tr data-image-parameters-id="@watchPoint.WatchPointID">
+                            <td><a href="\WatchPoints\Detail\@watchPoint.WatchPointID" title="View Watch Point"><span class="glyphicon glyphicon-search"></span></a></td>
                             <td>@(watchPoint.Camera == null ? "" : watchPoint.Camera.Name)</td>
                             <td>@watchPoint.Name</td>
-                            <td>@Html.ActionLink("View Watch Point", "Detail", "WatchPoints", new { id = watchPoint.WatchPointID }, null)</td>
                         </tr>
                     }
                 }
