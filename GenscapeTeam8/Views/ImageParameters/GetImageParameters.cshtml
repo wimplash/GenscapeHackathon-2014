@@ -1,0 +1,19 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1>Image Parameters</h1>
+        <p class="lead">Here are the parameters for images.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        @if (ViewBag.ImageParameters == null)
+        {
+            <p>No image parameters provided</p>
+        }
+        else
+        {
+            <h2>@ViewBag.ImageParameters.Name</h2>
+            <img src="/api/Images/@ViewBag.ImageParameters.Id" />
+        }
+    </div>
+</div>
