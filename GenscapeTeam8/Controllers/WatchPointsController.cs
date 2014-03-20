@@ -30,6 +30,12 @@ namespace GenscapeTeam8.Controllers
             return View();
         }
 
+        public ActionResult Detail(int? id)
+        {
+            ViewBag.WatchPoint = context.WatchPoints.Where(watchPoint => watchPoint.WatchPointID == id).DefaultIfEmpty(null).FirstOrDefault();
+            return View();
+        }
+
         public ActionResult Index(int? id)
         {
             if (id == null)
