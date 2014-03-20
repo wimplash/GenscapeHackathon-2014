@@ -23,5 +23,10 @@ namespace GenscapeTeam8.Controllers
             }
             return View();
         }
+
+        public ActionResult Overview(int id)
+        {
+            return View(context.Cameras.Find(id));
+        }
 	}
 }
