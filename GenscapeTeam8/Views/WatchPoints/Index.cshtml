@@ -11,13 +11,14 @@
                 <tr>
                     <th>Camera</th>
                     <th>Name</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @if (ViewBag.WatchPoints.Count == 0)
                 {
                     <tr>
-                        <td colspan="2" class="text-center">No watch points found</td>
+                        <td colspan="3" class="text-center">No watch points found</td>
                     </tr>
                 }
                 else
@@ -27,6 +28,7 @@
                         <tr data-image-parameters-id="@watchPoint.WatchPointID">
                             <td>@(watchPoint.Camera == null ? "" : watchPoint.Camera.Name)</td>
                             <td>@watchPoint.Name</td>
+                            <td>@Html.ActionLink("View Watch Point", "Detail", "WatchPoints", new { id = watchPoint.WatchPointID }, null)</td>
                         </tr>
                     }
                 }

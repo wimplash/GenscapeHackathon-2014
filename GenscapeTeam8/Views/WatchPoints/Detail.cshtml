@@ -1,0 +1,53 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1>Watch Point</h1>
+        <p class="lead">Here is a watch point.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <table class="table zebra-striped" >
+                @if (ViewBag.WatchPoint == null)
+                {
+                    <tbody>
+                        <tr>
+                            <th colspan="2" class="text-center">No watch point found</th>
+                        </tr>
+                    </tbody>
+                }
+                else
+                {
+                    <tbody data-watchpoint-id="@ViewBag.WatchPoint.WatchPointID">
+                        <tr>
+                            <th>Name</th>
+                            <td>@ViewBag.WatchPoint.Name</td>
+                        </tr>
+                        <tr>
+                            <th>Camera Name</th>
+                            <td>@(ViewBag.WatchPoint.Camera == null ? String.Empty : ViewBag.WatchPoint.Camera.Name)</td>
+                        </tr>
+                        <tr>
+                            <th>Active?</th>
+                            <td>@(ViewBag.WatchPoint.Deactivated ? "Yes" : "No")</td>
+                        </tr>
+                        <tr>
+                            <th>Top</th>
+                            <td>@ViewBag.WatchPoint.Top</td>
+                        </tr>
+                        <tr>
+                            <th>Left</th>
+                            <td>@ViewBag.WatchPoint.Left</td>
+                        </tr>
+                        <tr>
+                            <th>Width</th>
+                            <td>@ViewBag.WatchPoint.Width</td>
+                        </tr>
+                        <tr>
+                            <th>Height</th>
+                            <td>@ViewBag.WatchPoint.Height</td>
+                        </tr>
+                   </tbody>
+                }
+        </table>
+    </div>
+</div>

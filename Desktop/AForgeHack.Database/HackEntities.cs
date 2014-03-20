@@ -17,5 +17,7 @@ namespace AForgeHack.Database
         public DbSet<Facility> Facilities { get; set; }
         public DbSet<Camera> Cameras { get; set; }
         public DbSet<WatchPoint> WatchPoints { get; set; }
+
+        public System.Data.Entity.DbSet<AForgeHack.Database.Event> Events { get; set; }
     }
 }
