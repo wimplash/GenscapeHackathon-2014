@@ -99,7 +99,7 @@
             this.Controls.Add(this.FacilitiesComboBox);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "LaunchForm";
-            this.Text = "LaunchForm";
+            this.Text = "Genscape Team 8";
             this.ResumeLayout(false);
             this.PerformLayout();
 
