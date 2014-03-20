@@ -9,9 +9,9 @@
         <table class="table table-condensed table-striped">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th># of Cameras</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,9 +26,9 @@
                     foreach (var facility in ViewBag.Facilities)
                     {
                         <tr data-facility-id="@facility.FacilityID">
+                            <td><a href="/Cameras/Index/@facility.FacilityID" title="View Cameras"><span class="glyphicon glyphicon-search"></span></a></td>
                             <td>@facility.Name</td>
                             <td>@facility.Cameras.Count</td>
-                            <td>@Html.ActionLink("View Cameras", "Index", "Cameras", new { id = @facility.FacilityID }, null)</td>
                         </tr>
                     }
                 }
