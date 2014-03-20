@@ -9,8 +9,11 @@
         <table class="table zebra-table">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Facility Name</th>
+                    <th>Camera Name</th>
                     <th># of Watch Points</th>
+                    <th>Url</th>
+                    <th>Path</th>
                     <th></th>
                 </tr>
             </thead>
@@ -18,16 +21,19 @@
                 @if (ViewBag.Cameras.Count == 0)
                 {
                     <tr>
-                        <td colspan="2" class="text-center">No cameras found</td>
+                        <td colspan="6" class="text-center">No cameras found</td>
                     </tr>
                 }
                 else
                 {
                     foreach (var camera in ViewBag.Cameras)
                     {
-                        <tr data-facility-id="@camera.CameraID">
+                        <tr data-camera-id="@camera.CameraID" data-camera-moniker="@(camera.Moniker == null ? String.Empty : @Html.Raw(camera.Moniker))">
+                            <td>@(camera.Facility == null ? String.Empty : camera.Facility.Name)</td>
                             <td>@camera.Name</td>
                             <td>@camera.WatchPoints.Count</td>
+                            <td>@camera.Url</td>
+                            <td>@camera.Path</td>
                             <td>@Html.ActionLink("View Watch Points", "Index", "WatchPoints", new { id = @camera.CameraID }, null)</td>
                         </tr>
                     }
