@@ -38,7 +38,7 @@
                     
                     
                     var watchPoint = activeWatchPoints[wpi];
-                    var events = watchPoint.Events.Where(e => e.StartTime > startime.AddHours(4)).ToList();
+                    var events = watchPoint.Events.Where(e => e.StartTime > startime.AddHours(3)).ToList();
                     
                     foreach (var ev in events)
                     {
