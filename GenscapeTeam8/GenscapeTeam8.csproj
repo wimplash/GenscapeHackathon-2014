@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7E9EDAC7-E008-42AE-AD3E-55CEE96FA386}</ProjectGuid>
+    <ProjectGuid>{ED995DA7-66EC-40A4-ABC3-F95B76A8AE9A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -161,6 +161,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\genscapeteam8.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -208,7 +209,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51226</DevelopmentServerPort>
+          <DevelopmentServerPort>51463</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:51226/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
