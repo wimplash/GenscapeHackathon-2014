@@ -135,7 +135,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImageParametersController.cs" />
+    <Compile Include="Controllers\WatchPointsController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\SourcesController.cs" />
@@ -190,10 +190,15 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Sources\Index.cshtml" />
     <Content Include="Views\Notifications\Index.cshtml" />
-    <Content Include="Views\ImageParameters\Index.cshtml" />
-    <Content Include="Views\ImageParameters\GetImageParameters.cshtml" />
+    <Content Include="Views\WatchPoints\Index.cshtml" />
+    <Content Include="Views\WatchPoints\Add.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Desktop\AForgeHack.Database\AForgeHack.Database.csproj">
+      <Project>{665836b1-6ae8-4a95-8a59-90d129f70474}</Project>
+      <Name>AForgeHack.Database</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

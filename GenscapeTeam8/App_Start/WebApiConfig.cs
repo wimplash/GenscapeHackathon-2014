@@ -16,8 +16,8 @@ namespace GenscapeTeam8
 
             config.Routes.MapHttpRoute(
                 name: "ImagesController",
-                routeTemplate: "api/Images/{id}/{timestamp}",
-                defaults: new { id = RouteParameter.Optional, timestamp = RouteParameter.Optional }
+                routeTemplate: "api/Images/{cameraId}/{timestamp}",
+                defaults: new { cameraId = RouteParameter.Optional, timestamp = RouteParameter.Optional }
             );
 
             config.Routes.MapHttpRoute(
