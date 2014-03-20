@@ -9,7 +9,7 @@
         <table class="table zebra-striped" >
             <thead>
                 <tr>
-                    <th>Facility</th>
+                    <th>Camera</th>
                     <th>Name</th>
                 </tr>
             </thead>
@@ -24,8 +24,8 @@
                 {
                     foreach (var watchPoint in ViewBag.WatchPoints)
                     {
-                        <tr data-image-parameters-id="@watchPoint.WatchPointId">
-                            <td>@watchPoint.Camera.Facility.Name</td>
+                        <tr data-image-parameters-id="@watchPoint.WatchPointID">
+                            <td>@(watchPoint.Camera == null ? "" : watchPoint.Camera.Name)</td>
                             <td>@watchPoint.Name</td>
                         </tr>
                     }

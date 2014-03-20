@@ -9,6 +9,8 @@ namespace GenscapeTeam8.Controllers
 {
     public class WatchPointsController : Controller
     {
+        private HackEntities context = new HackEntities();
+
         public ActionResult Add(int id, Double x, Double y)
         {
             ViewBag.WatchPointAdded = true;
@@ -32,11 +34,11 @@ namespace GenscapeTeam8.Controllers
         {
             if (id == null)
             {
-                ViewBag.WatchPoints = new List<WatchPoint>();
+                ViewBag.WatchPoints = context.WatchPoints.ToList();
             }
             else
             {
-                ViewBag.WatchPoints = new Camera().WatchPoints;
+                ViewBag.WatchPoints = context.WatchPoints.Where(watchPoint => watchPoint.Camera.CameraID == id).ToList();
             }
             return View();
         }
