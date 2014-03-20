@@ -199,10 +199,7 @@
     <Content Include="Views\WatchPoints\Add.cshtml" />
     <Content Include="Views\Facilities\Index.cshtml" />
     <Content Include="Views\WatchPoints\Detail.cshtml" />
-    <Content Include="Views\Events\Create.cshtml" />
-    <Content Include="Views\Events\Delete.cshtml" />
     <Content Include="Views\Events\Details.cshtml" />
-    <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
