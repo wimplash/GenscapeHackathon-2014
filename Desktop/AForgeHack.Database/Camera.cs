@@ -16,5 +16,13 @@ namespace AForgeHack.Database
         public Facility Facility { get; set; }
         public string Name { get; set; }
         public virtual List<WatchPoint> WatchPoints { get; set; }
+        public string Moniker { get; set; }
+        public string Url { get; set; }
+        public string Path { get; set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

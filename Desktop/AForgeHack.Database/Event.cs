@@ -12,6 +12,10 @@ namespace AForgeHack.Database
         public WatchPoint WatchPoint { get; set; }
         public DateTime TimeStamp { get; set; }
         public string Notes { get; set; }
+        public override string ToString()
+        {
+            return this.TimeStamp + " " + this.Notes;
+        }
 
     }
 }

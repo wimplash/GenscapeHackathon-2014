@@ -16,5 +16,9 @@ namespace AForgeHack.Database
         public string Name { get; set; }
         public virtual List<Camera> Cameras { get; set; }
 
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }
