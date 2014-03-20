@@ -10,11 +10,12 @@ namespace AForgeHack.Database
     {
         public int EventID { get; set; }
         public WatchPoint WatchPoint { get; set; }
-        public DateTime TimeStamp { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
         public string Notes { get; set; }
         public override string ToString()
         {
-            return this.TimeStamp + " " + this.Notes;
+            return this.StartTime + " " + this.Notes;
         }
 
     }
