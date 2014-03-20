@@ -34,7 +34,8 @@
                             <td>@camera.WatchPoints.Count</td>
                             <td>@camera.Url</td>
                             <td>@camera.Path</td>
-                            <td>@Html.ActionLink("View Watch Points", "Index", "WatchPoints", new { id = @camera.CameraID }, null)</td>
+                            <td>@Html.ActionLink("Motion Graph", "Overview", "Cameras", new { id = camera.CameraID }, null)</td>
+                            <td>@Html.ActionLink("View Watch Points", "Index", "WatchPoints", new { id = camera.CameraID }, null)</td>
                         </tr>
                     }
                 }
