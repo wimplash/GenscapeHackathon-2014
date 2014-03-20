@@ -10,7 +10,7 @@ namespace GenscapeTeam8.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Genscape Team 8";
 
             return View();
         }
