@@ -234,9 +234,10 @@ namespace AforgeHack
         IEnumerable<WatchPoint> watchPointHolder;
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
-
-            this.selectedDevice.Stop();
+            if (this.selectedDevice != null)
+            {
+                this.selectedDevice.Stop();
+            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
