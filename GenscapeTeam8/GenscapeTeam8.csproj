@@ -201,6 +201,7 @@
     <Content Include="Views\WatchPoints\Detail.cshtml" />
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Home\ChartTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Desktop\AForgeHack.Database\AForgeHack.Database.csproj">

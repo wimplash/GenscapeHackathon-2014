@@ -44,19 +44,25 @@ namespace AforgeHack
             get { return camera; }
             set 
             {
-                camera = db.Cameras.Find(value.CameraID);                
+                camera = db.Cameras.Find(value.CameraID);
+                if (this.selectedDevice != null)
+                {
+                    this.selectedDevice.Stop();
+                    this.selectedDevice.NewFrame -= selectedDevice_NewFrame;
+                }
                 if (!string.IsNullOrWhiteSpace(camera.Moniker))
                 {
                     //setup webcam
                     this.selectedDevice = new VideoCaptureDevice(camera.Moniker);
                     this.selectedDevice.NewFrame += selectedDevice_NewFrame;
                     this.selectedDevice.Start();
-
-                    
             
                 }
                 else if (!string.IsNullOrWhiteSpace(camera.Url))
                 {
+                    this.selectedDevice = new MJPEGStream(camera.Url);
+                    this.selectedDevice.NewFrame += selectedDevice_NewFrame;
+                    this.selectedDevice.Start();
                     //setup ip cam
                 }
                 else if (!string.IsNullOrWhiteSpace(camera.Path))
@@ -90,19 +96,20 @@ namespace AforgeHack
                     var point = wps[i];
                     detector.MotionZones = new Rectangle[] { new Rectangle(point.Left, point.Top, point.Width, point.Height) };
                     var value = detector.ProcessFrame(frame);                    
-                    if (value > .001)
+                    if (value > .002)
                     {
                         UpdateText(point.Name);
-                        if (point.Events.Count == 0 || (DateTime.Now - point.Events.Last().EndTime ).TotalSeconds > 5)
+                        if (point.Events.Count == 0 || (DateTime.Now - point.Events.Last().EndTime ).TotalSeconds > 10)
                         {
                             var e = new Event() { StartTime = DateTime.Now, EndTime = DateTime.Now, Notes = "Motion", WatchPoint = point };
                             this.AddEvent(e);
                             point.Events.Add(e);
-                            db.SaveChanges();                    
+                            db.SaveChanges();               
                         }
                         else
                         {
                             point.Events.Last().EndTime = DateTime.Now;
+                            db.SaveChanges();   
                         }
                         
                     }

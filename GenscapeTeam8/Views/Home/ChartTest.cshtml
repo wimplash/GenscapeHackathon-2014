@@ -1,0 +1,59 @@
+﻿@model AForgeHack.Database.Camera
+
+@{
+    ViewBag.Title = "ChartTest";
+    var activeWatchPoints = Model.WatchPoints.Where(wp => !wp.Deactivated).ToList();
+    var height = activeWatchPoints.Count() * 20;
+}
+
+<h2>Chart Test</h2>
+
+<canvas id="watchPointGraph" height="@height" width="1000">
+
+</canvas>
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var cv = document.getElementById('watchPointGraph');
+            var ctx = cv.getContext('2d');
+            ctx.fillStyle = "slategray";
+            ctx.strokeStyle = "gainsboro";
+
+            ctx.moveTo(0, 0);
+            ctx.lineTo(1000, 0);
+            ctx.stroke();
+
+            @{
+                var windowInHours = .25;
+                var startime = DateTime.Now.Subtract(TimeSpan.FromHours(windowInHours));
+                for (int wpi = 0; wpi < activeWatchPoints.Count(); wpi++)
+                {
+                    var h = wpi * 20;
+                    var ch = h + 20;
+                    @:ctx.moveTo(0, @ch);
+                    @:ctx.lineTo(1000, @ch);
+                    @:ctx.stroke();
+                    
+                    
+                    var watchPoint = activeWatchPoints[wpi];
+                    var events = watchPoint.Events.Where(e => e.StartTime > startime).ToList();
+                    
+                    foreach (var ev in events)
+                    {
+                        var timediff = ev.StartTime - startime;
+                        var x = timediff.TotalHours / windowInHours * 1000;
+                        var w = (ev.EndTime - ev.StartTime).TotalHours / windowInHours * 1000;
+                        @:ctx.fillRect(@x, @h, @w, 20);
+                    }
+                }
+            }
+
+        });
+
+    </script>
+
+}
+

@@ -13,13 +13,11 @@ namespace AforgeHack
 {
     public partial class LaunchForm : Form
     {
+        HackEntities db = new HackEntities();
         public LaunchForm()
         {
             InitializeComponent();
-            using (var db = new HackEntities())
-            {
                 this.FacilitiesComboBox.DataSource = db.Facilities.ToList();
-            }
         }
 
         private void FacilitiesComboBox_SelectedIndexChanged(object sender, EventArgs e)
